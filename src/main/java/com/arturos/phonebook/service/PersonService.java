@@ -7,4 +7,6 @@ import java.util.List;
 @Service
 public interface PersonService {
     public List<Person> getPersonList();
+    public Person getPersonById(String s);
+    public void  savePerson(Person person);
 }

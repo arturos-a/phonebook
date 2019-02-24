@@ -33,4 +33,14 @@ public class PersonServiceDb implements PersonService {
     public List<Person> getPersonList(){
         return personRepository.findAll();
     }
+
+    @Override
+    public Person getPersonById(String s) {
+        return null;
+    }
+
+    @Override
+    public void savePerson(Person person) {
+
+    }
 }

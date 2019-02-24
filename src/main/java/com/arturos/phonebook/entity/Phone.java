@@ -16,6 +16,10 @@ public class Phone {
     public Phone(String phone) {
         this.setPhone(phone);
     }
+    public Phone(Long id, String phone){
+        this.phoneId = id;
+        this.phone = phone;
+    }
     public Phone() {
 
     }

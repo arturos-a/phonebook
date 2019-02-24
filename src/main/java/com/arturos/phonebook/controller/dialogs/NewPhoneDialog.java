@@ -3,46 +3,62 @@ package com.arturos.phonebook.controller.dialogs;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.NativeButton;
+import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.spring.annotation.UIScope;
+import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 import org.springframework.stereotype.Component;
 
 
 
 @Component
-public class NewPhoneDialog {
-    Dialog dialog = new Dialog();
+@UIScope
+public class NewPhoneDialog extends VerticalLayout {
 
     public NewPhoneDialog() {
-        Button addBut = new Button("Добавить");
 
+        setAlignItems(Alignment.CENTER);
         TextField firstName = new TextField();
-        firstName.setId("firstname");
         firstName.setLabel("First Name");
-        firstName.setPlaceholder("Enter Firstname");
 
-
+        add(firstName);
         TextField lastName = new TextField();
-        lastName.setId("lastname");
         lastName.setLabel("Last Name");
-        lastName.setPlaceholder("Enter Lastname");
 
-        dialog.add(firstName);
-        dialog.add(lastName);
+        add(lastName);
+        TextField note = new TextField();
+        note.setLabel("Note");
 
-        dialog.add(addBut);
+        add(note);
 
-        NativeButton cancelButton = new NativeButton("Cancel", event -> {
-            dialog.close();
+        TextField phone1 = new TextField();
+        note.setLabel("Phone 1");
+
+        add(phone1);
+
+        TextField phone2 = new TextField();
+        note.setLabel("Phone 2");
+
+        add(phone2);
+
+        HorizontalLayout horizontalLayout = new HorizontalLayout();
+        Button back = new Button("Back");
+        back.addClickListener(i->{
+            getUI().ifPresent(e->e.navigate(PhoneListComponent.class));
         });
 
-        dialog.add(cancelButton);
+        horizontalLayout.add(back);
 
+        Button save = new Button("Save");
+        back.addClickListener(i->{
+            getUI().ifPresent(e->e.navigate(PhoneListComponent.class));
+        });
 
-        dialog.setCloseOnOutsideClick(false);
-        dialog.setCloseOnEsc(true);
+        horizontalLayout.add(save);
+
+        add(horizontalLayout);
+
     }
 
-    com.vaadin.flow.component.Component getDialog () {
-        return dialog;
-    }
 }
