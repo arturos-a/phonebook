@@ -23,34 +23,33 @@ import java.util.List;
 
 @Route("")
 @UIScope
-public class PhoneListComponent extends VerticalLayout {
+public class PhoneBookComponent extends VerticalLayout {
     //Beans
     private final PersonService personService;
     private NewPhoneDialog newPhoneDialog;
 
     @Autowired
-    public PhoneListComponent(@Qualifier("mockService") PersonService personService, NewPhoneDialog newPhoneDialog) {
+    public PhoneBookComponent(@Qualifier("mockService") PersonService personService, NewPhoneDialog newPhoneDialog) {
+        //Creating grid component
+        this.personService = personService;
+        this.newPhoneDialog = newPhoneDialog;
+
         Grid<Person> grid = new Grid<>(Person.class);
-        List<Person> personList = personService.getPersonList();
+        //Get persons list from service
+        List<Person> personList = this.personService.getPersonList();
         grid.setItems(personList);
         grid.setColumns("firstName","lastName");
+        //Event listener in each row. Navigate to Person form
         grid.addItemClickListener(item -> getUI().ifPresent(ui ->
                 ui.navigate(PersonForm.class,item.getItem().getId().toString())
         ));
-
+        //Binding to layout
         add(grid);
 
-
-        this.personService = personService;
-        this.newPhoneDialog = newPhoneDialog;
 
         Button button = new Button("New");
         button.addClickListener(event -> getUI().ifPresent(i->i.navigate("")));
         add(button);
-    }
-
-    private void showPhones(Person item) {
-
     }
 
 

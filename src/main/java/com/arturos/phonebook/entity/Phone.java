@@ -12,6 +12,7 @@ public class Phone {
     @Id
     @GeneratedValue
     Long phoneId;
+    PhoneType type;
     String phone;
     public Phone(String phone) {
         this.setPhone(phone);

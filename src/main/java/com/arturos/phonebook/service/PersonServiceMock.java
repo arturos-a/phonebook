@@ -1,6 +1,7 @@
 package com.arturos.phonebook.service;
 
 import com.arturos.phonebook.entity.Person;
+import com.arturos.phonebook.dto.PersonUi;
 import com.arturos.phonebook.entity.Phone;
 import org.springframework.stereotype.Service;
 
@@ -54,6 +55,7 @@ public class PersonServiceMock implements PersonService {
 
     @Override
     public void savePerson(Person person) {
+        System.out.println(person);
 
     }
 }

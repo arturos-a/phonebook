@@ -1,6 +1,7 @@
 package com.arturos.phonebook.service;
 
 import com.arturos.phonebook.entity.Person;
+import com.arturos.phonebook.dto.PersonUi;
 import com.arturos.phonebook.entity.Phone;
 import com.arturos.phonebook.repository.PersonRepository;
 import org.springframework.stereotype.Service;
