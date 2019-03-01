@@ -3,6 +3,7 @@ package com.arturos.phonebook.service;
 import com.arturos.phonebook.entity.Person;
 import com.arturos.phonebook.dto.PersonUi;
 import com.arturos.phonebook.entity.Phone;
+import com.arturos.phonebook.entity.PhoneType;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -46,8 +47,8 @@ public class PersonServiceMock implements PersonService {
         person.setLastName("Petrov");
         person.setFirstName("Peter");
         List<Phone> phones = new ArrayList<>();
-        phones.add(new Phone(1L,"+79179117676"));
-        phones.add(new Phone(2L,"+74959087671"));
+        phones.add(new Phone(PhoneType.HOME,"+79179117676"));
+        phones.add(new Phone(PhoneType.MOBILE,"+74959087671"));
         person.setPhones(phones);
 
         return person;

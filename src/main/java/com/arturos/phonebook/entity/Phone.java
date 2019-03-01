@@ -14,8 +14,9 @@ public class Phone {
     Long phoneId;
     PhoneType type;
     String phone;
-    public Phone(String phone) {
+    public Phone(PhoneType phoneType, String phone) {
         this.setPhone(phone);
+        this.setType(phoneType);
     }
     public Phone(Long id, String phone){
         this.phoneId = id;

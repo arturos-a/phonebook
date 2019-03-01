@@ -3,10 +3,7 @@ package com.arturos.phonebook.entity;
 import com.arturos.phonebook.dto.PersonUi;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class Person {
     private String lastName;
     private String firstName;
     private String note;
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     List<Phone> phones;
 
     public static Person createPerson(PersonUi personUi) {
@@ -37,7 +34,7 @@ public class Person {
         temp = new Phone();
         temp.setType(PhoneType.MOBILE);
         temp.setPhone(personUi.getMobilePhone());
-
+        phones.add(temp);
         person.setPhones(phones);
         return person;
     }

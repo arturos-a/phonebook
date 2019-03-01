@@ -18,30 +18,19 @@ public class PersonServiceDb implements PersonService {
         this.personRepository = personRepository;
     }
 
-    public List<Person> init(){
-        List<Phone> phoneList = new ArrayList<>();
-        Phone phone= new Phone();
-        phone.setPhone("+79174548987");
-        phoneList.add(phone);
-        Person person = new Person();
-        person.setPhones(phoneList);
-        person.setLastName("Ivanov");
-        person.setFirstName("Ivan");
-        personRepository.save(person);
-        List<Person> all = personRepository.findAll();
-        return  all;
-    }
     public List<Person> getPersonList(){
         return personRepository.findAll();
     }
 
     @Override
     public Person getPersonById(String s) {
-        return null;
+        return personRepository.getOne(Long.valueOf(s));
     }
 
     @Override
     public void savePerson(Person person) {
+        System.out.println("zzz="+person);
+        personRepository.save(person);
 
     }
 }

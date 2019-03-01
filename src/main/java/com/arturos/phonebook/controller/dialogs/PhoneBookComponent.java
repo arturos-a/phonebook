@@ -26,14 +26,13 @@ import java.util.List;
 public class PhoneBookComponent extends VerticalLayout {
     //Beans
     private final PersonService personService;
-    private NewPhoneDialog newPhoneDialog;
 
     @Autowired
-    public PhoneBookComponent(@Qualifier("mockService") PersonService personService, NewPhoneDialog newPhoneDialog) {
+    public PhoneBookComponent(@Qualifier("prodService") PersonService personService) {
         //Creating grid component
         this.personService = personService;
-        this.newPhoneDialog = newPhoneDialog;
 
+        //Create grid view
         Grid<Person> grid = new Grid<>(Person.class);
         //Get persons list from service
         List<Person> personList = this.personService.getPersonList();
@@ -48,7 +47,7 @@ public class PhoneBookComponent extends VerticalLayout {
 
 
         Button button = new Button("New");
-        button.addClickListener(event -> getUI().ifPresent(i->i.navigate("")));
+        button.addClickListener(event -> getUI().ifPresent(ui->ui.navigate(PersonForm.class)));
         add(button);
     }
 

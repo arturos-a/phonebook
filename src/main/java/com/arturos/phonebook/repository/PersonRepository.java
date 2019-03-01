@@ -8,4 +8,6 @@ import java.util.List;
 @Repository
 public interface PersonRepository extends JpaRepository<Person,Long> {
     List<Person> findAll();
+    Person save(Person person);
+    Person getOne(Long id);
 }
