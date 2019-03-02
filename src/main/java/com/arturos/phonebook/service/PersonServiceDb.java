@@ -19,7 +19,7 @@ public class PersonServiceDb implements PersonService {
     }
 
     public List<Person> getPersonList(){
-        return personRepository.findAll();
+        return personRepository.findAllByFirstNameIsNotNullAndLastNameIsNotNull();
     }
 
     @Override
@@ -29,8 +29,12 @@ public class PersonServiceDb implements PersonService {
 
     @Override
     public void savePerson(Person person) {
-        System.out.println("zzz="+person);
         personRepository.save(person);
 
+    }
+
+    @Override
+    public void remove(Person person) {
+        personRepository.delete(person);
     }
 }
